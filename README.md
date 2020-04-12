@@ -1,4 +1,4 @@
-# RWC_lattice_model
+# RCW lattice model
 
 A simple python script to explore the model as described in XXX
 
