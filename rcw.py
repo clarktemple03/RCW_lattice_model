@@ -157,11 +157,11 @@ collapse_degrees = np.linspace(0,1,11)
 class parameter_setting():
     ''' Parameters that can be changed in the model '''
     def __init__(self):
-        self.Eii = 1
-        self.Erw = -0.25
-        self.Err = 1
-        self.gamma = 0.7
-        self.charge_frac = 0.7
+        self.Eii = 0.3
+        self.Erw = -0.1
+        self.Err = 0.3
+        self.gamma = 0.5
+        self.charge_frac = 0.65
         self.kappa = 2
         self.length = 50
 
@@ -196,7 +196,7 @@ for idx,collapse_degree in enumerate(collapse_degrees):
     G_rna = rna_graph_generator(collapse_degree,rna_length)
     F_RNA = rna_partition_function(G_rna,Err,n_ions,kappa)[0]
     F_ion = analytical_ion_partition_function(n_inner_sites,n_ions,Eii)
-    F_water = water_partition_function(A,Nw,Nw_inner,Erw)
+    F_water = water_partition_function(A,Nw-Nw_inner,Nw_inner,Erw)
 
     F[idx] = F_water+F_ion+F_RNA
 
